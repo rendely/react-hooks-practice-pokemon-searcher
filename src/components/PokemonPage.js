@@ -6,6 +6,7 @@ import { Container } from "semantic-ui-react";
 
 function PokemonPage() {
   const [allPokemon, setAllPokemon] = useState([]);
+  const [search, setSearch] = useState('');
 
   useEffect(getAllPokemon, []);
 
@@ -15,16 +16,20 @@ function PokemonPage() {
       .then(allPokemon => setAllPokemon(allPokemon))
   }
 
+  const displayedPokemon = allPokemon.filter(pokemon =>
+    pokemon.name.toLowerCase().match(search)
+    )
+
   return (
     <Container>
       <h1>Pokemon Searcher</h1>
       <br />
       <PokemonForm />
       <br />
-      <Search />
+      <Search search={search} setSearch={setSearch}/>
       <br />
       <PokemonCollection 
-        allPokemon={allPokemon}
+        allPokemon={displayedPokemon}
       />
     </Container>
   );

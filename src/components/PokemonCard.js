@@ -12,7 +12,7 @@ function PokemonCard({pokemon}) {
     <Card onClick={handleClickCard}>
       <div>
         <div className="image">
-          <img src={isFlipped ? pokemon.sprites.front : pokemon.sprites.back} alt={`${pokemon.name}`}/>
+          <img src={isFlipped ? pokemon.sprites.back : pokemon.sprites.front} alt={`${pokemon.name}`}/>
         </div>
         <div className="content">
           <div className="header">{pokemon.name}</div>
